@@ -22,7 +22,12 @@
             <li><a href="{% url 'score-create' %}">Add a Score</a></li>
             <li><a href="{% url 'score-index' %} ">View all</a></li>
             <li><a href="/">Home</a></li>
-
+            <li>
+              <form id='logout-form' method='post' action='{% url 'logout' %}'>
+              {% csrf_token %}
+              <button type='submit'>log out</button>
+              </form>
+            </li>
           {% else %}
             
             <li><a href="/about">Sign up</a></li>
