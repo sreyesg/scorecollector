@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel='stylesheet' href='{% static 'css/scores/score-detail.css' %}' >
+
+{% endblock %}
+
+{% block content %}
+
+<div class='score-detail'>
+    <h1> {{score.name}}</h1>
+    <h2> Composer: {{score.composer}} </h2>
+    <ul>
+       <li>Genre: {{ score.genre }}</li> 
+       <li>Book: {{ score.book }}</li> 
+       <li>Page: {{ score.page }}</li> 
+    </ul>
+<div class='score-actions'>
+    <a href='{% url 'score-update' score.id %}' class='btn warn'>Edit</a>
+    <a href='{% url 'score-delete' score.id %}' class='btn warn'>Delete</a>
+</div>
+</div>
+
+{% endblock%}
+

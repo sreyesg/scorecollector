@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% comment %} <link rel="shortcut icon" type="image/png" href="" /> {% endcomment %}
+    <title>Piano Score Collector</title>
+    {% block head %} 
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="header-logo-container">
+        <a href="/">
+          <img src="" alt="" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          {% comment %} <li><a href="/about">All Scores</a></li> {% endcomment %}
+          <li><a href="{% url 'score-create' %}">Add a Score</a></li>
+          <li><a href="/about">Sign up</a></li>
+          <li><a href="/about">Log in</a></li>
+          <li><a href="{% url 'score-index' %} ">View all</a></li>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+     {% block content %} 
+     {% endblock %}
+     </main>
+  </body>
+</html>
+ 
