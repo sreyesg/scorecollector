@@ -10,4 +10,5 @@ urlpatterns = [
     path('scores/create', views.ScoreCreate.as_view(), name='score-create'),
     path('scores/<int:pk>/update/', views.ScoreUpdate.as_view(), name='score-update'),
     path('scores/<int:pk>/delete/', views.ScoreDelete.as_view(), name='score-delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
