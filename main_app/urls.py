@@ -1,9 +1,9 @@
 from django.urls import path
 from . import views
-from main_app.views import ScoreCreate, ScoreUpdate, ScoreDelete
+from main_app.views import ScoreCreate, ScoreUpdate, ScoreDelete, Home
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.Home.as_view(), name='home'),
     path('scores/', views.score_index, name='score-index'),
     path('scores/<int:score_id>', views.score_detail, name='score-detail'),
     # path('score/<score_id>', views.ScoreDetail, name 'score-detail'),

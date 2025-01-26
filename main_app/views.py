@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from main_app.models import Score
+from django.contrib.auth.views import LoginView
 
-def home(request):
-    return render(request, 'home.html')
+class Home(LoginView):
+    template_name = 'home.html'
 
 def score_index(request):
     score_list = Score.objects.all()

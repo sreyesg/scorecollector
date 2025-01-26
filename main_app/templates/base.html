@@ -18,12 +18,18 @@
       </div>
       <nav>
         <ul>
-          {% comment %} <li><a href="/about">All Scores</a></li> {% endcomment %}
-          <li><a href="{% url 'score-create' %}">Add a Score</a></li>
-          <li><a href="/about">Sign up</a></li>
-          <li><a href="/about">Log in</a></li>
-          <li><a href="{% url 'score-index' %} ">View all</a></li>
-          <li><a href="/">Home</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'score-create' %}">Add a Score</a></li>
+            <li><a href="{% url 'score-index' %} ">View all</a></li>
+            <li><a href="/">Home</a></li>
+
+          {% else %}
+            
+            <li><a href="/about">Sign up</a></li>
+            <li><a href="/about">Log in</a></li>
+            <li><a href="/">Home</a></li>
+          {% endif %}
+          
         </ul>
       </nav>
     </header>
