@@ -4,14 +4,19 @@ from main_app.models import Score
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class Home(LoginView):
     template_name = 'home.html'
 
+@login_required
 def score_index(request):
-    score_list = Score.objects.all()
+    score_list = Score.objects.filter(author=request.user)
     return render(request, 'scores/index.html', {'scores': score_list})
 
+@login_required
 def score_detail(request, score_id):
     print(score_id, "this is the ScoreID")
     score = Score.objects.get(id=score_id)
@@ -39,7 +44,7 @@ def signup(request):
 #     model = Score
 #     template_name = 'scores/index.html'
 
-class ScoreCreate(CreateView):
+class ScoreCreate(LoginRequiredMixin, CreateView):
     model = Score
     fields = '__all__'
 
@@ -48,10 +53,10 @@ class ScoreCreate(CreateView):
         return super().form_valid(form)
     
     
-class ScoreUpdate(UpdateView):
+class ScoreUpdate(LoginRequiredMixin, UpdateView):
     model = Score
     fields = ['genre','book','page']
 
-class ScoreDelete(DeleteView):
+class ScoreDelete(LoginRequiredMixin, DeleteView):
     model = Score
     success_url = '/scores/'
